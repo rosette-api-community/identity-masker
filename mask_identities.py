@@ -32,42 +32,42 @@ MASKS = {
     # they can still be distinghuished from other entities of that type
     # E.g., "LOCATION1", "LOCATION2", ...
     
+    "LOCATION": "LOCATION{}",
+    "NATIONALITY": "NATIONALITY{}",
     "ORGANIZATION": "ORGANIZATION{}",
     "PERSON": "PERSON{}",
-    "LOCATION": "LOCATION{}",
     "PRODUCT": "PRODUCT{}",
-    "TITLE": "TITLE{}",
-    "NATIONALITY": "NATIONALITY{}",
     "RELIGION": "RELIGION{}",
+    "TITLE": "TITLE{}",
     
     # The following masks are generic and don't require indexes
     "IDENTIFIER:CREDIT_CARD_NUM": "IDENTIFIER:CREDIT_CARD_NUM",
+    "IDENTIFIER:DISTANCE": "IDENTIFIER:DISTANCE",
     "IDENTIFIER:EMAIL": "IDENTIFIER:EMAIL",
+    "IDENTIFIER:LATITUDE_LONGITUDE": "IDENTIFIER:LATITUDE_LONGITUDE",
     "IDENTIFIER:MONEY": "IDENTIFIER:MONEY",
     "IDENTIFIER:PERSONAL_ID_NUM": "IDENTIFIER:PERSONAL_ID_NUM",
     "IDENTIFIER:PHONE_NUMBER": "IDENTIFIER:PHONE_NUMBER",
-    "TEMPORAL:DATE": "TEMPORAL:DATE",
-    "TEMPORAL:TIME": "TEMPORAL:TIME",
-    "IDENTIFIER:LATITUDE_LONGITUDE": "IDENTIFIER:LATITUDE_LONGITUDE",
     "IDENTIFIER:URL": "IDENTIFIER:URL",
-    "IDENTIFIER:DISTANCE": "IDENTIFIER:DISTANCE"
+    "TEMPORAL:DATE": "TEMPORAL:DATE",
+    "TEMPORAL:TIME": "TEMPORAL:TIME"
 }
 
-DEFAULT_MASKS = {
-    "ORGANIZATION": "ORGANIZATION{}",
-    "PERSON": "PERSON{}",
-    "IDENTIFIER:CREDIT_CARD_NUM": "IDENTIFIER:CREDIT_CARD_NUM",
-    "IDENTIFIER:EMAIL": "IDENTIFIER:EMAIL",
-    "IDENTIFIER:MONEY": "IDENTIFIER:MONEY",
-    "IDENTIFIER:PERSONAL_ID_NUM": "IDENTIFIER:PERSONAL_ID_NUM",
-    "IDENTIFIER:PHONE_NUMBER": "IDENTIFIER:PHONE_NUMBER",
-    "TEMPORAL:DATE": "TEMPORAL:DATE",
-    "TEMPORAL:TIME": "TEMPORAL:TIME",
-    "IDENTIFIER:LATITUDE_LONGITUDE": "IDENTIFIER:LATITUDE_LONGITUDE",
-}
+DEFAULT_MASKS = [
+    "IDENTIFIER:CREDIT_CARD_NUM",
+    "IDENTIFIER:EMAIL",
+    "IDENTIFIER:LATITUDE_LONGITUDE",
+    "IDENTIFIER:MONEY",
+    "IDENTIFIER:PERSONAL_ID_NUM",
+    "IDENTIFIER:PHONE_NUMBER",
+    "ORGANIZATION",
+    "PERSON",
+    "TEMPORAL:DATE",
+    "TEMPORAL:TIME"
+]
 
 def entities(content, api, language=None, uri=False, **kwargs):
-    """Get a entities from the given content.
+    """Get entities from the given content.
     
     content:  a string
               (can be content itself, or, if uri=True, a URI from which to
@@ -298,7 +298,7 @@ if __name__ == '__main__':
         '-t', '--entity-types',
         nargs='+',
         choices=list(MASKS.keys()),
-        default=list(DEFAULT_MASKS.keys()),
+        default=DEFAULT_MASKS,
         metavar='TYPE',
         help=(
             'A list of named entity types to mask (refer to '
@@ -323,5 +323,5 @@ if __name__ == '__main__':
         language=args.language,
         uri=args.content_uri
     )
-    # Mask and print the data and print to stdout
+    # Mask and print the data to stdout
     print(mask(adm, {type_: MASKS[type_] for type_ in args.entity_types}))
