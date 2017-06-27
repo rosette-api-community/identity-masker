@@ -1,0 +1,7 @@
+NATIONALITY1 company ORGANIZATION1 says has been victim of cyberattack
+Market News | TEMPORAL:DATE | TEMPORAL:TIME
+NATIONALITY1 company ORGANIZATION1 says has been victim of cyberattack
+LOCATION1, TEMPORAL:DATE NATIONALITY1 construction materials company ORGANIZATION2 said on TEMPORAL:DATE that it had been a victim of a cyberattack, and it had isolated its computer systems in order to protect data.
+"Along with other big companies, ORGANIZATION1 has been the victim of a cyberattack. As a security measure and in order to protect our data, we have isolated our computer systems," said a company spokesman.
+The spokesman added ORGANIZATION1 was in the process of trying to fix the problem. (Reporting by PERSON1; Writing by PERSON2; Editing by PERSON3)
+
