@@ -1,4 +1,4 @@
-# Indentity Masker
+# Identity Masker
 
 This repository includes Python code demonstrating how to use Rosette API entity extraction results to mask personally identifying information in text.
 
