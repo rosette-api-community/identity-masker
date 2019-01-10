@@ -81,7 +81,7 @@ def entities(content, api, language=None, uri=False, **kwargs):
     E.g.:
     
     api = API(user_key=<key>, service_url='https://api.rosette.com/rest/v1/')
-    api.setUrlParameter('output', 'rosette') 
+    api.set_url_parameter('output', 'rosette') 
     adm = entities(
         'John Smith is the alleged perpetrator of serious crimes.',
         api
@@ -157,7 +157,7 @@ def masked_mentions(adm, masks):
     E.g.:
     
     api = API(user_key=<key>, service_url='https://api.rosette.com/rest/v1/')
-    api.setUrlParameter('output', 'rosette') 
+    api.set_url_parameter('output', 'rosette') 
     adm = entities(
         'John Smith is accused of stealing $1,000,000.',
         api
@@ -210,7 +210,7 @@ def mask(adm, masks):
     E.g.:
     
     api = API(user_key=<key>, service_url='https://api.rosette.com/rest/v1/')
-    api.setUrlParameter('output', 'rosette') 
+    api.set_url_parameter('output', 'rosette') 
     adm = entities(
         'John Smith is accused of stealing $1,000,000.',
         api
@@ -316,7 +316,7 @@ if __name__ == '__main__':
     # Instantiate the Rosette API
     api = API(user_key=key, service_url=args.api_url)
     # Get API results as full ADM
-    api.setUrlParameter('output', 'rosette')
+    api.set_url_parameter('output', 'rosette')
     adm = entities(
         get_content(args.input),
         api,
